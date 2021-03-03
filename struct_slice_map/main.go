@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"golang.org/x/tour/pic"
+	_ "golang.org/x/tour/pic"
 )
 
 var (
@@ -15,7 +15,7 @@ type Vertex struct {
 }
 
 func main() {
-	/*
+
 	i, j := 42, 2701
 
 	p := &i 		// points to i
@@ -111,14 +111,40 @@ func main() {
 	for _, value := range pow {
 		fmt.Printf("%d\n", value)
 	}
-	*/
 
-	// stopped @ 18
-	pic.Show(Pic)
+	// maps
+	type Vertex struct {
+		Lat, Long float64
+	}
+
+	var m map[string]Vertex // [string : Vertex]
+
+	m = make(map[string]Vertex)
+	m["Bell Labs"] = Vertex{
+		40.68433, -74.39967,
+	}
+
+	m["Ryan"] = Vertex {
+		10, 10,
+	}
+	fmt.Println(m["Bell Labs"])
+
+	// check if key is in map
+	_, ok := m["Ryan"]
+	fmt.Println(ok)
+
+	// anon func
+	add := func(x, y int) int {
+		return x + y
+	}
+
+	fmt.Println(compute(add, 3, 4))
 
 }
 
-func Pic(dx, dy int) [][]uint8 {
+// used function within function... kinda cool!
+func compute(fn func(int, int) int, x, y int) int {
+	return fn(x, y)
 }
 
 func printSlice(s []int) {
