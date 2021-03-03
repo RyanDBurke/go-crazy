@@ -1,2 +1,4 @@
-# go-crazy
-:bear: learning some golang
+<br />
+<div align="center">
+:bear: learning some golang via https://tour.golang.org/
+</div>
